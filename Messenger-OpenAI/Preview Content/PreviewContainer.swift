@@ -12,7 +12,7 @@ class PreviewContainer {
     
     let container: ModelContainer!
     
-    init(_ types: [any PersistentModel.Type] = [Author.self, Message.self]) {
+    init(_ types: [any PersistentModel.Type] = [Conversation.self, Author.self, Message.self]) {
         
         let schema = Schema(types)
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
@@ -23,13 +23,10 @@ class PreviewContainer {
         
     }
     
-    func addItems() {
+    private func addItems() {
         Task { @MainActor in
-            Author.dummyData.forEach { author in
-                container.mainContext.insert(author)
-                author.messages.forEach { message in
-                    message?.author = author
-                }
+            Conversation.dummyData.forEach { conversation in
+                container.mainContext.insert(conversation)
             }
         }
     }

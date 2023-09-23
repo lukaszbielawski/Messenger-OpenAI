@@ -11,6 +11,9 @@ extension Date {
     var convertToString: String {
         let difference = Calendar.current.dateComponents([.month, .day, .hour, .minute], from: self, to: .now)
 
+        let then = Calendar.current.dateComponents([.month, .day], from: self)
+        let now = Calendar.current.dateComponents([.month, .day], from: .now)
+
         switch difference.day! {
         case 0:
             let hours = Calendar.current.component(.hour, from: self)

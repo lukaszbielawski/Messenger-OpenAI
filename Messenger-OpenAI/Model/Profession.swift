@@ -11,6 +11,7 @@ import SwiftUI
 enum Profession: Codable {
     case mathTeacher
     case doctor
+    case programmer
     
     var professionImageName: Image {
         switch self {

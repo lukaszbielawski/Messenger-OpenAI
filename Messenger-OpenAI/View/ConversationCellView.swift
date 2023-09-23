@@ -10,50 +10,51 @@ import SwiftData
 import SwiftUI
 
 struct ConversationCellView: View {
-    @Bindable var author: Author
+    var conversation: Conversation
 
     @Environment(\.modelContext) private var modelContext
 
     var message: Message?
+    let author: Author
 
-    init(author: Author) {
-        self.author = author
-        guard !author.messages.isEmpty else { return }
-        self.message = author.messages.sorted { $0!.timestamp > $1!.timestamp }.first!
+    init(conversation: Conversation) {
+        self.conversation = conversation
+        self.author = conversation.author
+        guard !conversation.messages.isEmpty else { return }
+        self.message = conversation.messages.sorted { $0!.timestamp > $1!.timestamp }.first!
+
     }
 
     var body: some View {
-        GeometryReader { geo in
             HStack {
                 author.profession.professionImageName
                     .resizable()
                     .scaledToFit()
-                    .frame(width: geo.size.width * 0.25)
-                    .cornerRadius(geo.size.width * 0.25)
-                VStack(alignment: .leading, spacing: 8.0) {
+                    .frame(width: UIScreen.main.bounds.size.width * 0.15,
+                           height: UIScreen.main.bounds.size.width * 0.15)
+                VStack(alignment: .leading, spacing: 2.0) {
                     Text(author.name)
-                        .font(.title2)
+                        .font(.subheadline)
                         .fontWeight(.semibold)
                     Text(message?.timestamp.convertToString ?? "")
+                        .font(.caption)
 
-                    Text("\((message != nil && message!.author == nil) ? "You: " : "")\(message?.content ?? "")")
+                    Text("\(((message != nil && !message!.isUserMessage) || message == nil) ? "" : "You: ")\(message?.content ?? "")")
+                        .font(.footnote)
                         .opacity(message == nil ? 0 : 1)
-                        .lineLimit(2)
+                        .lineLimit(1)
                 }
-                .padding()
+                .padding(8)
                 Spacer()
             }
-            .padding()
-            .background {
-                Color.primaryColor.cornerRadius(16.0)
-            }
             .padding(.horizontal)
-        }
+            .background(Color.primaryColor.cornerRadius(16.0))
+            .padding(.horizontal)
     }
 }
 
 #Preview {
     let preview = PreviewContainer()
-    return ConversationCellView(author: Author.dummyData.first!)
+    return ConversationCellView(conversation: Conversation.dummyData.first!)
         .modelContainer(preview.container)
 }

@@ -11,15 +11,12 @@ import SwiftData
 actor AuthorsContainer {
     @MainActor
     static func create(_ isFirstTimeLaunched: inout Bool) -> ModelContainer {
-        let schema = Schema([Author.self, Message.self])
+        let schema = Schema([Conversation.self, Author.self, Message.self])
         let configuration = ModelConfiguration()
         let container = try! ModelContainer(for: schema, configurations: [configuration])
         if isFirstTimeLaunched {
-            Author.dummyData.forEach { author in
-                container.mainContext.insert(author)
-                author.messages.forEach { message in
-                    message?.author = author
-                }
+            Conversation.dummyData.forEach { conversation in
+                container.mainContext.insert(conversation)
             }
             isFirstTimeLaunched = false
         }

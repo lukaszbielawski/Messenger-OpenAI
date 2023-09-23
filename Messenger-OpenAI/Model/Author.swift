@@ -17,22 +17,25 @@ final class Author: Codable, Identifiable {
     var name: String
     var profession: Profession
 
-    @Relationship(deleteRule: .nullify, inverse: \Message.author)
-    var messages: [Message?]
+//    @Relationship(deleteRule: .nullify, inverse: \Message.author)
+//    var messages: [Message?]
     
 
     init(id: UUID = UUID(), name: String = "", profession: Profession = .doctor, messages: [Message] = []) {
         self.id = id
         self.name = name
         self.profession = profession
-        self.messages = messages
+//        self.messages = messages
+//        for message in messages {
+//            message.author = self
+//        }
     }
 
     enum CodingKeys: String, CodingKey {
         case id
         case name
         case profession
-        case messages
+//        case messages
     }
 
     init(from decoder: Decoder) throws {
@@ -40,7 +43,7 @@ final class Author: Codable, Identifiable {
         self.id = try container.decode(UUID.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         self.profession = try container.decode(Profession.self, forKey: .profession)
-        self.messages = try container.decode([Message?].self, forKey: .messages)
+//        self.messages = try container.decode([Message?].self, forKey: .messages)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -48,6 +51,6 @@ final class Author: Codable, Identifiable {
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(profession, forKey: .profession)
-        try container.encode(messages, forKey: .messages)
+//        try container.encode(messages, forKey: .messages)
     }
 }
