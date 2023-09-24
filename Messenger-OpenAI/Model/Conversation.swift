@@ -10,21 +10,20 @@ import SwiftData
 
 @Model
 class Conversation: Codable, Identifiable {
-    
     @Attribute(.unique)
     var id = UUID()
-    
+
     @Relationship(deleteRule: .cascade)
     var author: Author
 
     @Relationship(deleteRule: .nullify)
     var messages: [Message?] = []
-    
-    internal init(author: Author, messages: [Message?] = []) {
+
+    init(author: Author, messages: [Message?] = []) {
         self.author = author
         self.messages = messages
     }
-    
+
     enum CodingKeys: CodingKey {
         case author
         case messages

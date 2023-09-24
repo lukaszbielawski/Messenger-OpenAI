@@ -9,11 +9,18 @@ import SwiftData
 import SwiftUI
 
 struct ConversationView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
+
     @Bindable var conversation: Conversation
 
-    @Namespace var bottomID
+    @Binding var toDelete: Bool
 
-    @Environment(\.modelContext) private var modelContext
+    @FocusState private var isTextFieldFocused: Bool
+    @State private var textFieldValue = ""
+    @State private var isAlertShown = false
+
+    @Namespace private var bottomID
 
     var sortedMessages: [Message] {
         guard !conversation.messages.isEmpty else { return [] }
@@ -21,109 +28,142 @@ struct ConversationView: View {
     }
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             Color.backgroundColor
                 .ignoresSafeArea()
-            ScrollViewReader { proxy in
-                ScrollView {
-                    Text("This is the beggining of your converastion with \(conversation.author.name)")
-                        .font(.caption)
-                        .padding(.bottom)
-                    LazyVStack(spacing: 8) {
-                        ForEach(sortedMessages) { message in
-                            if message.isUserMessage {
-                                UserMessageView(message: message)
-                                    .containerRelativeFrame(.horizontal, alignment: .trailing)
-                            } else {
-                                AuthorMessageView(message: message, conversation: conversation)
-                                    .containerRelativeFrame(.horizontal, alignment: .leading)
+            VStack(spacing: 0) {
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        ConversationBeginningView(author: conversation.author)
+                        LazyVStack(spacing: 8) {
+                            ForEach(sortedMessages) { message in
+                                if message.isUserMessage {
+                                    UserMessageView(message: message)
+                                        .containerRelativeFrame(.horizontal, alignment: .trailing)
+                                } else {
+                                    AuthorMessageView(message: message, author: conversation.author)
+                                        .containerRelativeFrame(.horizontal, alignment: .leading)
+                                }
                             }
+                            Divider()
+                                .opacity(0)
+                                .id(bottomID)
                         }
-                        Divider()
-                            .opacity(0)
-                            .id(bottomID)
+                    }.onAppear {
+                        proxy.scrollTo(bottomID)
+                    }.onChange(of: conversation.messages.count) { _, _ in
+                        withAnimation {
+                            proxy.scrollTo(bottomID)
+                        }
                     }
-                }.onAppear {
-                    proxy.scrollTo(bottomID)
                 }
+                .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
+                MessageTextFieldView(textFieldValue: $textFieldValue, isTextFieldFocused: _isTextFieldFocused) {
+                    self.createMessage(content: textFieldValue, isUserMessage: true)
+                }
+            }
+        }.toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    isAlertShown = true
+                } label: {
+                    Image(systemName: "trash.fill")
+                }
+                .alert("Do you want to delete this conversation permanently?",
+                       isPresented: $isAlertShown,
+                       actions: {
+                           Button("Cancel", role: .cancel) {}
+                           Button("Delete", role: .destructive) {
+                               deleteConversation()
+                           }
+                       })
             }
         }
     }
 }
 
 extension ConversationView {
-    struct AuthorMessageView: View {
-        let message: Message
+    private func deleteConversation() {
+        toDelete = true
+        dismiss()
+    }
 
-        @Bindable var conversation: Conversation
+    private func createMessage(content: String, isUserMessage: Bool) {
+        guard !textFieldValue.isEmpty || !isUserMessage else { return }
+
+        let message = Message(timestamp: .now, content: content, isUserMessage: isUserMessage)
+        modelContext.insert(message)
+        conversation.messages.append(message)
+
+        if isUserMessage {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            textFieldValue = ""
+        }
+    }
+}
+
+extension ConversationView {
+    struct ConversationBeginningView: View {
+        @Bindable var author: Author
 
         var body: some View {
-            HStack(alignment: .bottom) {
-                conversation.author.profession.professionImageName
+            VStack(spacing: 16) {
+                author.profileImage.getImage
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.size.width * 0.065,
-                           height: UIScreen.main.bounds.size.width * 0.065)
-                    .padding(.vertical, 8)
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(conversation.author.name)
-                        .font(.caption)
-                        .padding(.leading, 8)
-                    HStack {
-                        VStack(alignment: .leading, spacing: 2.0) {
-                            Text(message.timestamp.convertToString)
-                                .font(.caption2)
-                                .opacity(0.7)
-
-                            Text(message.content)
-                                .font(.footnote)
-                        }
-                        .padding(8)
-                        Spacer()
-                    }
-                    .background(Color.primaryColor.cornerRadius(16.0))
-                }
-            }
-            .padding(.horizontal)
-            .containerRelativeFrame(.horizontal, alignment: .leading) { value, _ in
-                value * 0.8
+                    .scaledToFill()
+                    .circleViewModifier(frameWidth: 150)
+                Text(author.name)
+                    .font(.title)
+                Text("This is the beggining of your converastion with \(author.name), a \(author.profession.toString)")
+                    .multilineTextAlignment(.center)
+                    .font(.caption)
+                    .padding(.bottom)
+                    .padding(.horizontal, 50)
             }
         }
     }
 
-    struct UserMessageView: View {
-        let message: Message
+    struct MessageTextFieldView: View {
+        @Binding var textFieldValue: String
+
+        @FocusState var isTextFieldFocused: Bool
+
+        var onSendButtonTap: () -> Void
 
         var body: some View {
-            HStack(alignment: .bottom) {
-                VStack(alignment: .leading, spacing: 2) {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 2.0) {
-                            Text(message.timestamp.convertToString)
-                                .font(.caption2)
-                                .foregroundStyle(Color.white)
-                                .opacity(0.7)
-                            Text(message.content)
-                                .foregroundStyle(Color.white)
-                                .font(.footnote)
-                        }
-                        .padding(8)
-                        Spacer()
-                    }
-                    .background(Color.accentColor.cornerRadius(16.0))
+            HStack(spacing: 16) {
+                Spacer()
+                TextField("Type to chatbot", text: $textFieldValue, axis: .vertical)
+                    .lineLimit(isTextFieldFocused ? 1...6 : 1...1)
+                    .textFieldStyle(OvalTextFieldStyle())
+                    .focused($isTextFieldFocused)
+
+                Button {
+                    onSendButtonTap()
+                } label: {
+                    Image(systemName: "paperplane.fill")
+                        .font(.title2)
                 }
+                .padding(.trailing)
             }
-            .padding(.horizontal)
-            .padding(.vertical, 8)
-            .containerRelativeFrame(.horizontal, alignment: .trailing) { value, _ in
-                value * 0.8
+            .animation(.easeInOut, value: isTextFieldFocused)
+            .containerRelativeFrame(.horizontal) { value, _ in
+                value * (isTextFieldFocused ? 0.9 : 0.6)
             }
+            .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+            .padding()
+            .background(Color.primaryColor
+                .ignoresSafeArea()
+            )
         }
     }
 }
 
 #Preview {
     let preview = PreviewContainer()
-    return ConversationView(conversation: Conversation.dummyData[0])
+    let toDelete: Binding<Bool> = .constant(false)
+    return ConversationView(conversation: Conversation.dummyData[0], toDelete: toDelete)
         .modelContainer(preview.container)
 }

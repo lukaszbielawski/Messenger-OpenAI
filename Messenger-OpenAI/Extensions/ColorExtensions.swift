@@ -20,4 +20,9 @@ extension Color {
     static var secondaryColor: Color {
         return Color("SecondaryColor")
     }
+    
+    static var textFieldColor: Color {
+        return Color("TextFieldColor")
+    }
+    
 }

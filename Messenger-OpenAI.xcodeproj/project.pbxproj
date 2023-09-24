@@ -17,10 +17,15 @@
 		B200D1942ABB12DC00EB11B4 /* Messenger_OpenAIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B200D1932ABB12DC00EB11B4 /* Messenger_OpenAIUITestsLaunchTests.swift */; };
 		B226637F2ABD7F9200FB7C41 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = B226637E2ABD7F9200FB7C41 /* Author.swift */; };
 		B22663812ABD863100FB7C41 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22663802ABD863100FB7C41 /* DummyData.swift */; };
-		B2E0E0032ABED86900308BEA /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E0E0022ABED86900308BEA /* ViewExtensions.swift */; };
+		B260D7902AC009BB00531B12 /* ConversationView+MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260D78F2AC009BB00531B12 /* ConversationView+MessageView.swift */; };
+		B260D7932AC00D4D00531B12 /* OvalTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260D7922AC00D4D00531B12 /* OvalTextFieldStyle.swift */; };
+		B260D7972AC0436000531B12 /* CreateConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260D7962AC0436000531B12 /* CreateConversationView.swift */; };
+		B260D7992AC0496D00531B12 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260D7982AC0496D00531B12 /* ImagePickerView.swift */; };
+		B260D7B12AC056B100531B12 /* ImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260D7B02AC056B100531B12 /* ImageType.swift */; };
+		B260D7B42AC061B200531B12 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260D7B32AC061B200531B12 /* ViewExtensions.swift */; };
 		B2E0E0052ABEEA3400308BEA /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E0E0042ABEEA3400308BEA /* Conversation.swift */; };
 		B2E0E0072ABEFA8C00308BEA /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E0E0062ABEFA8C00308BEA /* ConversationView.swift */; };
-		B2E0E00A2ABF2FE300308BEA /* OptionalDateComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E0E0092ABF2FE300308BEA /* OptionalDateComparator.swift */; };
+		B2E0E00A2ABF2FE300308BEA /* ConversationComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E0E0092ABF2FE300308BEA /* ConversationComparator.swift */; };
 		B2FDD0822ABD89700074D730 /* ConversationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FDD0812ABD89700074D730 /* ConversationCellView.swift */; };
 		B2FDD0852ABD993F0074D730 /* CustomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FDD0842ABD993F0074D730 /* CustomContainer.swift */; };
 		B2FDD0882ABDC10B0074D730 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FDD0872ABDC10B0074D730 /* PreviewContainer.swift */; };
@@ -54,7 +59,6 @@
 		B200D1762ABB12DA00EB11B4 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B200D1782ABB12DC00EB11B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B200D17B2ABB12DC00EB11B4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B200D17D2ABB12DC00EB11B4 /* Messenger_OpenAI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Messenger_OpenAI.entitlements; sourceTree = "<group>"; };
 		B200D17E2ABB12DC00EB11B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B200D1832ABB12DC00EB11B4 /* Messenger-OpenAITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Messenger-OpenAITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B200D1872ABB12DC00EB11B4 /* Messenger_OpenAITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messenger_OpenAITests.swift; sourceTree = "<group>"; };
@@ -63,10 +67,16 @@
 		B200D1932ABB12DC00EB11B4 /* Messenger_OpenAIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messenger_OpenAIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B226637E2ABD7F9200FB7C41 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		B22663802ABD863100FB7C41 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
-		B2E0E0022ABED86900308BEA /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		B260D78F2AC009BB00531B12 /* ConversationView+MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationView+MessageView.swift"; sourceTree = "<group>"; };
+		B260D7922AC00D4D00531B12 /* OvalTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalTextFieldStyle.swift; sourceTree = "<group>"; };
+		B260D7962AC0436000531B12 /* CreateConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateConversationView.swift; sourceTree = "<group>"; };
+		B260D7982AC0496D00531B12 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		B260D7B02AC056B100531B12 /* ImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageType.swift; sourceTree = "<group>"; };
+		B260D7B32AC061B200531B12 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		B260D7B52AC0811B00531B12 /* Messenger_OpenAI.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Messenger_OpenAI.entitlements; sourceTree = "<group>"; };
 		B2E0E0042ABEEA3400308BEA /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		B2E0E0062ABEFA8C00308BEA /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
-		B2E0E0092ABF2FE300308BEA /* OptionalDateComparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalDateComparator.swift; sourceTree = "<group>"; };
+		B2E0E0092ABF2FE300308BEA /* ConversationComparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationComparator.swift; sourceTree = "<group>"; };
 		B2FDD0812ABD89700074D730 /* ConversationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCellView.swift; sourceTree = "<group>"; };
 		B2FDD0842ABD993F0074D730 /* CustomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainer.swift; sourceTree = "<group>"; };
 		B2FDD0872ABDC10B0074D730 /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
@@ -126,12 +136,13 @@
 			children = (
 				B2E0E0082ABF2FCE00308BEA /* Utilities */,
 				B200D1722ABB12DA00EB11B4 /* Messenger_OpenAIApp.swift */,
+				B260D7B52AC0811B00531B12 /* Messenger_OpenAI.entitlements */,
 				B200D1782ABB12DC00EB11B4 /* Assets.xcassets */,
-				B200D17D2ABB12DC00EB11B4 /* Messenger_OpenAI.entitlements */,
 				B200D17E2ABB12DC00EB11B4 /* Info.plist */,
+				B260D7912AC00D2A00531B12 /* Styles */,
 				B2FDD0892ABDC5460074D730 /* Extensions */,
+				B260D7B22AC059F600531B12 /* Containers */,
 				B226637D2ABD7E8400FB7C41 /* Model */,
-				B226637C2ABD7E6100FB7C41 /* View Model */,
 				B226637B2ABD7E5B00FB7C41 /* View */,
 				B200D17A2ABB12DC00EB11B4 /* Preview Content */,
 			);
@@ -171,16 +182,11 @@
 				B200D1742ABB12DA00EB11B4 /* MenuView.swift */,
 				B2FDD0812ABD89700074D730 /* ConversationCellView.swift */,
 				B2E0E0062ABEFA8C00308BEA /* ConversationView.swift */,
+				B260D78F2AC009BB00531B12 /* ConversationView+MessageView.swift */,
+				B260D7962AC0436000531B12 /* CreateConversationView.swift */,
+				B260D7982AC0496D00531B12 /* ImagePickerView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		B226637C2ABD7E6100FB7C41 /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-				B2FDD0842ABD993F0074D730 /* CustomContainer.swift */,
-			);
-			path = "View Model";
 			sourceTree = "<group>";
 		};
 		B226637D2ABD7E8400FB7C41 /* Model */ = {
@@ -190,14 +196,31 @@
 				B200D1762ABB12DA00EB11B4 /* Message.swift */,
 				B226637E2ABD7F9200FB7C41 /* Author.swift */,
 				B2FDD08C2ABDDAF80074D730 /* Profession.swift */,
+				B260D7B02AC056B100531B12 /* ImageType.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B260D7912AC00D2A00531B12 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				B260D7922AC00D4D00531B12 /* OvalTextFieldStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		B260D7B22AC059F600531B12 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				B2FDD0842ABD993F0074D730 /* CustomContainer.swift */,
+			);
+			path = Containers;
 			sourceTree = "<group>";
 		};
 		B2E0E0082ABF2FCE00308BEA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				B2E0E0092ABF2FE300308BEA /* OptionalDateComparator.swift */,
+				B2E0E0092ABF2FE300308BEA /* ConversationComparator.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -208,7 +231,7 @@
 				B2FDD08A2ABDC59A0074D730 /* ColorExtensions.swift */,
 				B2FDD08E2ABDDB140074D730 /* DateExtensions.swift */,
 				B2FDD0902ABDE0610074D730 /* IntExtension.swift */,
-				B2E0E0022ABED86900308BEA /* ViewExtensions.swift */,
+				B260D7B32AC061B200531B12 /* ViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -365,16 +388,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B260D7B42AC061B200531B12 /* ViewExtensions.swift in Sources */,
 				B200D1752ABB12DA00EB11B4 /* MenuView.swift in Sources */,
 				B2FDD0852ABD993F0074D730 /* CustomContainer.swift in Sources */,
 				B200D1772ABB12DA00EB11B4 /* Message.swift in Sources */,
-				B2E0E00A2ABF2FE300308BEA /* OptionalDateComparator.swift in Sources */,
+				B2E0E00A2ABF2FE300308BEA /* ConversationComparator.swift in Sources */,
+				B260D7992AC0496D00531B12 /* ImagePickerView.swift in Sources */,
 				B226637F2ABD7F9200FB7C41 /* Author.swift in Sources */,
 				B2E0E0052ABEEA3400308BEA /* Conversation.swift in Sources */,
+				B260D7972AC0436000531B12 /* CreateConversationView.swift in Sources */,
 				B2FDD0822ABD89700074D730 /* ConversationCellView.swift in Sources */,
 				B2FDD0912ABDE0610074D730 /* IntExtension.swift in Sources */,
 				B2FDD08F2ABDDB140074D730 /* DateExtensions.swift in Sources */,
-				B2E0E0032ABED86900308BEA /* ViewExtensions.swift in Sources */,
+				B260D7902AC009BB00531B12 /* ConversationView+MessageView.swift in Sources */,
+				B260D7B12AC056B100531B12 /* ImageType.swift in Sources */,
+				B260D7932AC00D4D00531B12 /* OvalTextFieldStyle.swift in Sources */,
 				B2FDD08D2ABDDAF80074D730 /* Profession.swift in Sources */,
 				B2FDD08B2ABDC59A0074D730 /* ColorExtensions.swift in Sources */,
 				B22663812ABD863100FB7C41 /* DummyData.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OptionalDateComparator: SortComparator {
+struct ConversationComparator: SortComparator {
     typealias Compared = Conversation
     
     var order: SortOrder

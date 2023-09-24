@@ -11,26 +11,27 @@ extension Date {
     var convertToString: String {
         let difference = Calendar.current.dateComponents([.month, .day, .hour, .minute], from: self, to: .now)
 
-        let then = Calendar.current.dateComponents([.month, .day], from: self)
-        let now = Calendar.current.dateComponents([.month, .day], from: .now)
+        let nowDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: .now)
+        let thenDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: self)
 
-        switch difference.day! {
-        case 0:
-            let hours = Calendar.current.component(.hour, from: self)
-            let minutes = Calendar.current.component(.minute, from: self)
-            return"\(hours):\(minutes)"
-        case 1:
-            if Calendar.current.isDateInYesterday(self) {
-                return "Yesterday"
-            } else {
-                let day = Calendar.current.component(.day, from: self)
-                let month = Calendar.current.component(.month, from: self)
-                return day.addZeroIfOneDigit + "." + month.addZeroIfOneDigit
-            }
-        default:
-            let day = Calendar.current.component(.day, from: self)
-            let month = Calendar.current.component(.month, from: self)
-            return day.addZeroIfOneDigit + "." + month.addZeroIfOneDigit
+        if nowDateComponents.day! == thenDateComponents.day! {
+            return "\(thenDateComponents.hour!.addZeroIfOneDigit):\(thenDateComponents.minute!.addZeroIfOneDigit)"
+        } else if Calendar.current.isDateInYesterday(self) {
+            return "Yesterday, \(thenDateComponents.hour!.addZeroIfOneDigit):\(thenDateComponents.minute!.addZeroIfOneDigit)"
+        } else if difference.day! < 7 &&
+            Calendar.current.component(.weekday, from: self) != Calendar.current.component(.weekday, from: .now)
+        {
+            return "\(self.dayOfWeek), \(thenDateComponents.hour!.addZeroIfOneDigit):\(thenDateComponents.minute!.addZeroIfOneDigit)"
+        } else if nowDateComponents.year == thenDateComponents.year {
+            return "\(thenDateComponents.day!.addZeroIfOneDigit).\(thenDateComponents.month!.addZeroIfOneDigit)"
+        } else {
+            return "\(thenDateComponents.day!.addZeroIfOneDigit).\(thenDateComponents.month!.addZeroIfOneDigit).\(thenDateComponents.year!)"
         }
+    }
+
+    var dayOfWeek: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self).capitalized
     }
 }

@@ -8,21 +8,20 @@
 import Foundation
 import SwiftUI
 
-enum Profession: Codable {
+enum Profession: Codable, CaseIterable {
+    
     case mathTeacher
     case doctor
     case programmer
-    
-    var professionImageName: Image {
+
+    var toString: String {
         switch self {
         case .mathTeacher:
-            return Image(systemName: "person.circle.fill")
-//            return Image("MathTeacher")
+            return "math teacher"
         case .doctor:
-            return Image(systemName: "person.circle.fill")
-//            return Image("Doctor")
-        default:
-            return Image(systemName: "person.circle.fill")
+            return "doctor"
+        case .programmer:
+            return "programmer"
         }
     }
 }

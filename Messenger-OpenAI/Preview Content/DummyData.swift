@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Message {
     static var dummyData: [Message] = {
@@ -17,22 +18,22 @@ extension Message {
     Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.  Very long mess age incoming.  Very long message incoming.  Very long message incoming.  Very long message incoming.
     """
                     , isUserMessage: true),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
-            Message(timestamp: Date(timeIntervalSinceNow: -100000), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 1), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 2), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 3), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 4), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 5), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 6), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 7), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 8), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 9), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 9), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 9), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 9), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 9), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 9), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 300), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
+            Message(timestamp: Date(timeIntervalSinceNow: -86400 * 600), content: "Many messages with aproximatly two lines of text.", isUserMessage: false),
 
             Message(timestamp: Date.now, content: "Go to the blackboard.", isUserMessage: false),
         ]
@@ -43,9 +44,9 @@ extension Message {
 extension Author {
     static var dummyData: [Author] = {
         [
-            Author(name: "Jake Hawkings", profession: .doctor),
-            Author(name: "Alvin Squirrel", profession: .mathTeacher),
-            Author(name: "Alan Turner", profession: .programmer),
+            Author(name: "Jake Hawkings", profession: .doctor, profileImage: .apple),
+            Author(name: "Alvin Squirrel", profession: .mathTeacher, profileImage: .butterfly),
+            Author(name: "Alan Turner", profession: .programmer, profileImage: .lion),
         ]
     }()
 }

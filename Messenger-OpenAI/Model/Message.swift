@@ -13,8 +13,6 @@ final class Message: Codable, Identifiable {
     @Attribute(.unique)
     var id = UUID()
 
-//    var author: Author?
-
     var timestamp: Date
     var content: String
     var isUserMessage: Bool
@@ -23,7 +21,6 @@ final class Message: Codable, Identifiable {
         case id
         case timestamp
         case content
-//        case author
         case isUserMessage
     }
 
@@ -40,7 +37,6 @@ final class Message: Codable, Identifiable {
         self.id = try container.decode(UUID.self, forKey: .id)
         self.timestamp = try container.decode(Date.self, forKey: .timestamp)
         self.content = try container.decode(String.self, forKey: .content)
-//        self.author = try container.decodeIfPresent(Author.self, forKey: .author)
         self.isUserMessage = try container.decode(Bool.self, forKey: .isUserMessage)
     }
 
@@ -49,8 +45,6 @@ final class Message: Codable, Identifiable {
         try container.encode(id, forKey: .id)
         try container.encode(timestamp, forKey: .timestamp)
         try container.encode(content, forKey: .content)
-//        try container.encodeIfPresent(author, forKey: .author)
         try container.encode(isUserMessage, forKey: .isUserMessage)
-
     }
 }
