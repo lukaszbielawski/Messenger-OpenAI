@@ -13,18 +13,16 @@ import SwiftUI
 final class Author: Codable, Identifiable {
     @Attribute(.unique)
     var id: UUID
-    
+
     var name: String
     var profession: Profession
     var profileImage: ImageType
-    
 
     init(id: UUID = UUID(), name: String = "", profession: Profession = .doctor, profileImage: ImageType) {
         self.id = id
         self.name = name
         self.profession = profession
         self.profileImage = profileImage
-
     }
 
     enum CodingKeys: String, CodingKey {

@@ -18,6 +18,7 @@ struct ImagePickerView: View {
                         imageType.getImage
                             .resizable()
                             .scaledToFill()
+                        
 
                             .overlay(
                                 Color.primaryColor
@@ -42,11 +43,16 @@ struct ImagePickerView: View {
                                 }
                                 self.pickerSelection = imageType
                             })
+                            .scrollTransition(axis: .horizontal) { content, phase in
+                                content.scaleEffect(x: phase.isIdentity ? 1 : 0.6,
+                                                    y: phase.isIdentity ? 1 : 0.6)
+                            }
                     }
                 }
             }.onAppear {
                 proxy.scrollTo(pickerSelection, anchor: .center)
             }
+            
         }
     }
 }

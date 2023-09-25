@@ -19,8 +19,18 @@ struct ConversationView: View {
     @FocusState private var isTextFieldFocused: Bool
     @State private var textFieldValue = ""
     @State private var isAlertShown = false
+    @State private var didFinishLoading = true
+
+    @State private var appendTask: Task<Void, Error>?
 
     @Namespace private var bottomID
+
+    @State var service = NetworkService()
+
+    init(conversation: Conversation, toDelete: Binding<Bool>) {
+        self.conversation = conversation
+        self._toDelete = toDelete
+    }
 
     var sortedMessages: [Message] {
         guard !conversation.messages.isEmpty else { return [] }
@@ -45,6 +55,9 @@ struct ConversationView: View {
                                         .containerRelativeFrame(.horizontal, alignment: .leading)
                                 }
                             }
+                            if !didFinishLoading {
+                                TextResponsePlaceholderView(author: conversation.author)
+                            }
                             Divider()
                                 .opacity(0)
                                 .id(bottomID)
@@ -60,8 +73,8 @@ struct ConversationView: View {
                 .onTapGesture {
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }
-                MessageTextFieldView(textFieldValue: $textFieldValue, isTextFieldFocused: _isTextFieldFocused) {
-                    self.createMessage(content: textFieldValue, isUserMessage: true)
+                MessageTextFieldView(textFieldValue: $textFieldValue, didFinishLoading: $didFinishLoading, isTextFieldFocused: _isTextFieldFocused) {
+                    createMessage(content: textFieldValue, isUserMessage: true)
                 }
             }
         }.toolbar {
@@ -76,6 +89,7 @@ struct ConversationView: View {
                        actions: {
                            Button("Cancel", role: .cancel) {}
                            Button("Delete", role: .destructive) {
+                               appendTask?.cancel()
                                deleteConversation()
                            }
                        })
@@ -101,6 +115,24 @@ extension ConversationView {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             textFieldValue = ""
         }
+
+        didFinishLoading = false
+
+        appendTask =
+            Task {
+                let assistantMessage = try await fetchNewMessage()
+                didFinishLoading = true
+                conversation.messages.append(assistantMessage)
+                modelContext.insert(assistantMessage)
+            }
+    }
+
+    private func fetchNewMessage() async throws -> Message {
+        let assistantAPIMessage = try await service.postMessages(conversation: conversation)
+
+        return Message(timestamp: .now,
+                       content: assistantAPIMessage.content,
+                       isUserMessage: false)
     }
 }
 
@@ -127,6 +159,7 @@ extension ConversationView {
 
     struct MessageTextFieldView: View {
         @Binding var textFieldValue: String
+        @Binding var didFinishLoading: Bool
 
         @FocusState var isTextFieldFocused: Bool
 
@@ -146,6 +179,7 @@ extension ConversationView {
                     Image(systemName: "paperplane.fill")
                         .font(.title2)
                 }
+                .disabled(!didFinishLoading)
                 .padding(.trailing)
             }
             .animation(.easeInOut, value: isTextFieldFocused)

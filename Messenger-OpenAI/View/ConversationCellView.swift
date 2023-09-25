@@ -31,7 +31,7 @@ struct ConversationCellView: View {
                 .scaledToFill()
                 .circleViewModifier(frameWidth: UIScreen.main.bounds.width * 0.15)
 
-            VStack(alignment: .leading, spacing: 2.0) {        
+            VStack(alignment: .leading, spacing: 2.0) {
                 HStack(spacing: 4) {
                     Text(author.name)
                         .fontWeight(.semibold)

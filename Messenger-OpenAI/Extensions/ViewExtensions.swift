@@ -14,6 +14,5 @@ extension View {
             .frame(width: frameWidth,
                    height: frameWidth)
             .cornerRadius(frameWidth / 2)
-
     }
 }

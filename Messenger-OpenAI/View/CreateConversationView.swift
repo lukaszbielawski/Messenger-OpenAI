@@ -31,9 +31,6 @@ struct CreateConversationView: View {
             }
             Section(header: Text("Profile image")) {
                 ImagePickerView(pickerSelection: $authorProfileImage)
-                    .onChange(of: authorProfileImage) { _, newValue in
-                        print(newValue)
-                    }
             }
             Section {
                 Button {
@@ -41,7 +38,6 @@ struct CreateConversationView: View {
                         isAlertShown = true
                         return
                     }
-                    print(authorNameField)
 
                     let newAuthor = Author(
                         name: authorNameField,

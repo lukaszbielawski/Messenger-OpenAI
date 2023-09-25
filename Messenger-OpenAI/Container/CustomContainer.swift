@@ -18,12 +18,12 @@ actor AuthorsContainer {
             configurations: [configuration]
         )
 
-        if isFirstTimeLaunched {
-            Conversation.dummyData.forEach { conversation in
-                container.mainContext.insert(conversation)
-            }
-            isFirstTimeLaunched = false
-        }
+//        if isFirstTimeLaunched {
+//            Conversation.dummyData.forEach { conversation in
+//                container.mainContext.insert(conversation)
+//            }
+//            isFirstTimeLaunched = false
+//        }
 
         return container
     }

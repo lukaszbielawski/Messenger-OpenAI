@@ -18,7 +18,7 @@ enum ImageType: Int, Codable, CaseIterable {
     case sun = 7
     case moon = 8
     case ball = 9
-    
+
     var getImage: Image {
         return Image("image0\(self.rawValue)")
     }

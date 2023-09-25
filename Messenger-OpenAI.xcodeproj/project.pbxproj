@@ -17,6 +17,12 @@
 		B200D1942ABB12DC00EB11B4 /* Messenger_OpenAIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B200D1932ABB12DC00EB11B4 /* Messenger_OpenAIUITestsLaunchTests.swift */; };
 		B226637F2ABD7F9200FB7C41 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = B226637E2ABD7F9200FB7C41 /* Author.swift */; };
 		B22663812ABD863100FB7C41 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22663802ABD863100FB7C41 /* DummyData.swift */; };
+		B25587BF2AC145620072953B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25587BE2AC145620072953B /* NetworkService.swift */; };
+		B25587C22AC14ED20072953B /* RoleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25587C12AC14ED20072953B /* RoleType.swift */; };
+		B25587C52AC159120072953B /* PostError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25587C42AC159120072953B /* PostError.swift */; };
+		B25587C72AC15A510072953B /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25587C62AC15A510072953B /* APIModel.swift */; };
+		B25587C92AC15D2F0072953B /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25587C82AC15D2F0072953B /* PostModel.swift */; };
+		B25587CB2AC16F880072953B /* TextResponsePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25587CA2AC16F880072953B /* TextResponsePlaceholderView.swift */; };
 		B260D7902AC009BB00531B12 /* ConversationView+MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260D78F2AC009BB00531B12 /* ConversationView+MessageView.swift */; };
 		B260D7932AC00D4D00531B12 /* OvalTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260D7922AC00D4D00531B12 /* OvalTextFieldStyle.swift */; };
 		B260D7972AC0436000531B12 /* CreateConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260D7962AC0436000531B12 /* CreateConversationView.swift */; };
@@ -67,6 +73,12 @@
 		B200D1932ABB12DC00EB11B4 /* Messenger_OpenAIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messenger_OpenAIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B226637E2ABD7F9200FB7C41 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		B22663802ABD863100FB7C41 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
+		B25587BE2AC145620072953B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		B25587C12AC14ED20072953B /* RoleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleType.swift; sourceTree = "<group>"; };
+		B25587C42AC159120072953B /* PostError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostError.swift; sourceTree = "<group>"; };
+		B25587C62AC15A510072953B /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
+		B25587C82AC15D2F0072953B /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		B25587CA2AC16F880072953B /* TextResponsePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextResponsePlaceholderView.swift; sourceTree = "<group>"; };
 		B260D78F2AC009BB00531B12 /* ConversationView+MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationView+MessageView.swift"; sourceTree = "<group>"; };
 		B260D7922AC00D4D00531B12 /* OvalTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalTextFieldStyle.swift; sourceTree = "<group>"; };
 		B260D7962AC0436000531B12 /* CreateConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateConversationView.swift; sourceTree = "<group>"; };
@@ -134,14 +146,17 @@
 		B200D1712ABB12DA00EB11B4 /* Messenger-OpenAI */ = {
 			isa = PBXGroup;
 			children = (
-				B2E0E0082ABF2FCE00308BEA /* Utilities */,
 				B200D1722ABB12DA00EB11B4 /* Messenger_OpenAIApp.swift */,
 				B260D7B52AC0811B00531B12 /* Messenger_OpenAI.entitlements */,
 				B200D1782ABB12DC00EB11B4 /* Assets.xcassets */,
 				B200D17E2ABB12DC00EB11B4 /* Info.plist */,
-				B260D7912AC00D2A00531B12 /* Styles */,
+				B260D7912AC00D2A00531B12 /* Style */,
+				B2E0E0082ABF2FCE00308BEA /* Utilities */,
+				B260D7B22AC059F600531B12 /* Container */,
 				B2FDD0892ABDC5460074D730 /* Extensions */,
-				B260D7B22AC059F600531B12 /* Containers */,
+				B25587BD2AC145340072953B /* Services */,
+				B25587C32AC158E40072953B /* Errors */,
+				B25587C02AC14E9E0072953B /* JSONModel */,
 				B226637D2ABD7E8400FB7C41 /* Model */,
 				B226637B2ABD7E5B00FB7C41 /* View */,
 				B200D17A2ABB12DC00EB11B4 /* Preview Content */,
@@ -185,6 +200,7 @@
 				B260D78F2AC009BB00531B12 /* ConversationView+MessageView.swift */,
 				B260D7962AC0436000531B12 /* CreateConversationView.swift */,
 				B260D7982AC0496D00531B12 /* ImagePickerView.swift */,
+				B25587CA2AC16F880072953B /* TextResponsePlaceholderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -201,20 +217,46 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B260D7912AC00D2A00531B12 /* Styles */ = {
+		B25587BD2AC145340072953B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B25587BE2AC145620072953B /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B25587C02AC14E9E0072953B /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				B25587C12AC14ED20072953B /* RoleType.swift */,
+				B25587C62AC15A510072953B /* APIModel.swift */,
+				B25587C82AC15D2F0072953B /* PostModel.swift */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		B25587C32AC158E40072953B /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				B25587C42AC159120072953B /* PostError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		B260D7912AC00D2A00531B12 /* Style */ = {
 			isa = PBXGroup;
 			children = (
 				B260D7922AC00D4D00531B12 /* OvalTextFieldStyle.swift */,
 			);
-			path = Styles;
+			path = Style;
 			sourceTree = "<group>";
 		};
-		B260D7B22AC059F600531B12 /* Containers */ = {
+		B260D7B22AC059F600531B12 /* Container */ = {
 			isa = PBXGroup;
 			children = (
 				B2FDD0842ABD993F0074D730 /* CustomContainer.swift */,
 			);
-			path = Containers;
+			path = Container;
 			sourceTree = "<group>";
 		};
 		B2E0E0082ABF2FCE00308BEA /* Utilities */ = {
@@ -388,14 +430,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B25587BF2AC145620072953B /* NetworkService.swift in Sources */,
 				B260D7B42AC061B200531B12 /* ViewExtensions.swift in Sources */,
 				B200D1752ABB12DA00EB11B4 /* MenuView.swift in Sources */,
+				B25587CB2AC16F880072953B /* TextResponsePlaceholderView.swift in Sources */,
 				B2FDD0852ABD993F0074D730 /* CustomContainer.swift in Sources */,
 				B200D1772ABB12DA00EB11B4 /* Message.swift in Sources */,
+				B25587C92AC15D2F0072953B /* PostModel.swift in Sources */,
 				B2E0E00A2ABF2FE300308BEA /* ConversationComparator.swift in Sources */,
+				B25587C22AC14ED20072953B /* RoleType.swift in Sources */,
 				B260D7992AC0496D00531B12 /* ImagePickerView.swift in Sources */,
 				B226637F2ABD7F9200FB7C41 /* Author.swift in Sources */,
 				B2E0E0052ABEEA3400308BEA /* Conversation.swift in Sources */,
+				B25587C52AC159120072953B /* PostError.swift in Sources */,
 				B260D7972AC0436000531B12 /* CreateConversationView.swift in Sources */,
 				B2FDD0822ABD89700074D730 /* ConversationCellView.swift in Sources */,
 				B2FDD0912ABDE0610074D730 /* IntExtension.swift in Sources */,
@@ -409,6 +456,7 @@
 				B2FDD0882ABDC10B0074D730 /* PreviewContainer.swift in Sources */,
 				B200D1732ABB12DA00EB11B4 /* Messenger_OpenAIApp.swift in Sources */,
 				B2E0E0072ABEFA8C00308BEA /* ConversationView.swift in Sources */,
+				B25587C72AC15A510072953B /* APIModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

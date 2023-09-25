@@ -10,7 +10,7 @@ import Foundation
 extension Int {
     var addZeroIfOneDigit: String {
         switch self {
-        case 0...10:
+        case 0 ... 9:
             return "0" + String(self)
         default:
             return String(self)
