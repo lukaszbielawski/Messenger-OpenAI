@@ -11,7 +11,7 @@ The OpenAI Chatbot Messenger app is a versatile communication tool built using S
   
 <h2>Presentation</h2>
 
-https://github.com/lukaszbielawski/Messenger-OpenAI/assets/44624897/0e8d023e-831b-49af-aa22-4053cf190ea8
+https://github.com/lukaszbielawski/Messenger-OpenAI/assets/44624897/66ae5f35-38e8-4926-9131-a74092d614a1
 
 <h2>Requirements</h2>
 
